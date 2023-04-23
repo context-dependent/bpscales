@@ -4,6 +4,8 @@
 \alias{scale_color_blueprint}
 \alias{scale_colour_blueprint}
 \alias{scale_fill_blueprint}
+\alias{bp_pal}
+\alias{bp_ramp}
 \title{Colour and fill scales using Blueprint-branded palettes}
 \usage{
 scale_color_blueprint(
@@ -38,19 +40,83 @@ scale_fill_blueprint(
   end = 1,
   direction = 1
 )
+
+bp_pal(
+  type = "linear",
+  option = 1L,
+  alpha = 1,
+  begin = 0,
+  end = 1,
+  direction = 1
+)
+
+bp_ramp(
+  n,
+  type = "linear",
+  option = "blue",
+  alpha = 1,
+  begin = 0,
+  end = 1,
+  direction = 1
+)
 }
 \arguments{
-\item{type}{A string}
+\item{...}{Other parameters passed to \code{\link[ggplot2]{discrete_scale}} or
+\code{\link[ggplot2]{scale_color_gradientn}},
+depending on the value of \code{discrete}}
 
-\item{option}{A string}
+\item{type}{A character string indicating the type of color map to use.
+Three types are available:
+\itemize{
+\item \code{"linear"}
+\item \code{"bipolar"}
+\item \code{"multi"}
+}}
 
-\item{alpha}{A number \link{0, 1}.}
+\item{option}{A character string indicating the specific palette
+Options are specific to type:
+\itemize{
+\item {
+\code{"linear"}
+\itemize{
+\item \code{"blue"} (default)
+\item \code{"green"}
+\item \code{"coral"}
+}
+}
+\item {
+\code{"bipolar"}
+\itemize{
+\item \code{"green_coral"} (default)
+\item \code{"blue_green"}
+\item \code{"blue_coral"}
+}
+}
+\item {
+\code{"multi"}
+\itemize{
+\item \code{"fsc"} (default)
+}
+}
+}}
 
-\item{begin}{A number \link{0, 1}.}
+\item{discrete}{Boolean value specifying whether the scale will be applied to
+discrete (TRUE) or continuous (FALSE) data.}
 
-\item{end}{A number \link{0, 1}.}
+\item{alpha}{The alpha transparency, a number between 0 and 1 inclusive,
+see argument alpha in \code{\link[grDevices]{hsv}}.}
 
-\item{direction}{An integer: one of 1 (fwd), -1 (reverse)}
+\item{begin}{The (corrected) hue, a number between 0 and 1 inclusive,
+at which the color map begins.}
+
+\item{end}{The (corrected) hue, a number between 0 and 1 inclusive,
+at which the color map ends.}
+
+\item{direction}{Sets the order of colors in the scale. If 1, the default,
+colors are ordered from darkest to lightest. If -1, the order of colors is
+reversed.}
+
+\item{n}{Integer. The number of distinct colour values to generate.}
 }
 \description{
 Colour and fill scales using Blueprint-branded palettes

@@ -17,7 +17,7 @@ show_blueprint_palettes <- function() {
         }
     }
 
-    d |> ggplot(aes(i, option)) +
+    d |> ggplot(aes(.data$i, .data$option)) +
         facet_grid(type ~ ., scales = "free_y", space = "free_y") +
         geom_tile(fill = d$color) +
         scale_x_continuous(expand = expansion(0, 0))

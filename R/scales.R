@@ -1,6 +1,6 @@
-#' Generate colour maps
+#' Colour and fill scales using Blueprint-branded palettes
 #'
-#' @rdname blueprint_colours
+#' @rdname scale_blueprint
 #'
 #' @param type
 #'   A character string indicating the type of color map to use.
@@ -37,66 +37,26 @@
 #'       }
 #'     }
 #'   }
+#' @param discrete
+#'   Boolean value specifying whether the scale will be applied to
+#'   discrete (TRUE) or continuous (FALSE) data.
 #' @param alpha
-#'   The alpha transparency, a number in [0,1], see argument alpha in
-#'   \code{\link[grDevices]{hsv}}.
+#'   The alpha transparency, a number between 0 and 1 inclusive,
+#'   see argument alpha in \code{\link[grDevices]{hsv}}.
 #' @param begin
-#'   The (corrected) hue in [0,1] at which the color map begins.
+#'   The (corrected) hue, a number between 0 and 1 inclusive,
+#'   at which the color map begins.
 #' @param end
-#'   The (corrected) hue in [0,1] at which the color map ends.
+#'   The (corrected) hue, a number between 0 and 1 inclusive,
+#'   at which the color map ends.
 #' @param direction
 #'   Sets the order of colors in the scale. If 1, the default,
 #'   colors are ordered from darkest to lightest. If -1, the order of colors is
 #'   reversed.
-#' @return
-#'   \code{bp_pal} returns a function, which
-#'   accepts an integer \code{n} and produces a color ramp
-#'   with \code{n} values
-bp_pal <- function(
-    type = "linear",
-    option = 1L,
-    alpha = 1,
-    begin = 0,
-    end = 1,
-    direction = 1) {
-    function(n) {
-        bp_ramp(n, type, option, alpha, begin, end, direction)
-    }
-}
-
-#' Interpolate a colour ramp using a set of brand anchor points
-#'
-#' @rdname blueprint_colours
-bp_ramp <- function(
-    n,
-    type = "linear",
-    option = "blue",
-    alpha = 1,
-    begin = 0,
-    end = 1,
-    direction = 1) {
-    if (direction == -1L) {
-        temp <- begin
-        begin <- end
-        end <- temp
-    }
-    d <- grDevices::col2rgb(gradients[[type]][[option]]) / 255
-    m <- grDevices::rgb(t(d))
-    f <- grDevices::colorRamp(m, space = "Lab", interpolate = "spline")
-    g <- f(seq(begin, end, length.out = n)) / 255
-    grDevices::rgb(g[, 1], g[, 2], g[, 3], alpha = alpha)
-}
-
-#' Colour and fill scales using Blueprint-branded palettes
-#'
-#' @rdname scale_blueprint
-#'
-#' @param type A string
-#' @param option A string
-#' @param alpha A number [0, 1].
-#' @param begin A number [0, 1].
-#' @param end A number [0, 1].
-#' @param direction An integer: one of 1 (fwd), -1 (reverse)
+#' @param ...
+#'   Other parameters passed to \code{\link[ggplot2]{discrete_scale}} or
+#'   \code{\link[ggplot2]{scale_color_gradientn}},
+#'   depending on the value of `discrete`
 #'
 #' @export
 scale_color_blueprint <- function(
@@ -152,4 +112,40 @@ scale_fill_blueprint <- function(
             ), ...
         )
     }
+}
+
+#' @rdname scale_blueprint
+#' @export
+bp_pal <- function(
+    type = "linear",
+    option = 1L,
+    alpha = 1,
+    begin = 0,
+    end = 1,
+    direction = 1) {
+    function(n) {
+        bp_ramp(n, type, option, alpha, begin, end, direction)
+    }
+}
+
+#' @param n Integer. The number of distinct colour values to generate.
+#' @rdname scale_blueprint
+bp_ramp <- function(
+    n,
+    type = "linear",
+    option = "blue",
+    alpha = 1,
+    begin = 0,
+    end = 1,
+    direction = 1) {
+    if (direction == -1L) {
+        temp <- begin
+        begin <- end
+        end <- temp
+    }
+    d <- grDevices::col2rgb(gradients[[type]][[option]]) / 255
+    m <- grDevices::rgb(t(d))
+    f <- grDevices::colorRamp(m, space = "Lab", interpolate = "spline")
+    g <- f(seq(begin, end, length.out = n)) / 255
+    grDevices::rgb(g[, 1], g[, 2], g[, 3], alpha = alpha)
 }

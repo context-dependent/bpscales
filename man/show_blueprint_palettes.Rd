@@ -6,6 +6,9 @@
 \usage{
 show_blueprint_palettes()
 }
+\value{
+a plot, showing all of the blueprint colour palettes.
+}
 \description{
 Display defined Palettes
 }
