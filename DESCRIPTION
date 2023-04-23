@@ -10,3 +10,17 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+VignetteBuilder: knitr
+Imports: 
+    dplyr (>= 1.1.0),
+    ggplot2 (>= 3.4.2),
+    grDevices (>= 4.2.3),
+    tibble (>= 3.2.1)
