@@ -8,7 +8,8 @@
 [![R-CMD-check](https://github.com/context-dependent/bpscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/context-dependent/bpscales/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of bpscales is to …
+`bpscales` provides Blueprint-branded colour palettes for general
+applications and scales for specific application to ggplot2 plots.
 
 ## Installation
 
@@ -20,38 +21,55 @@ You can install the development version of bpscales from
 devtools::install_github("context-dependent/bpscales")
 ```
 
-## Example
+## Palettes
 
-This is a basic example which shows you how to solve a common problem:
+The available palettes are categorized by two parameters: `type` and
+`option`.
 
 ``` r
 library(bpscales)
-## basic example code
+
+show_blueprint_palettes()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+<img src="man/figures/README-palettes-1.png" width="100%" />
+
+## Discrete Data
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(bpscales)
+library(palmerpenguins)
+library(ggplot2)
+## basic example code
+
+penguins |>
+  ggplot(aes(bill_length_mm, flipper_length_mm)) +
+  geom_point(aes(fill = species), shape = 21, size = 3) +
+  scale_fill_blueprint(discrete = TRUE)
+#> Warning: Removed 2 rows containing missing values (`geom_point()`).
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+<img src="man/figures/README-discrete-1.png" width="100%" />
 
-You can also embed plots, for example:
+``` r
+penguins |>
+  ggplot(aes(bill_length_mm, flipper_length_mm)) +
+  geom_point(aes(fill = species), shape = 21, size = 3) +
+  scale_fill_blueprint(type = "linear", option = "green", discrete = TRUE)
+#> Warning: Removed 2 rows containing missing values (`geom_point()`).
+```
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+<img src="man/figures/README-discrete-2.png" width="100%" />
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+## Continuous Data
+
+``` r
+penguins |>
+  ggplot(aes(bill_length_mm, flipper_length_mm)) +
+  facet_wrap(~species, nrow = 1) +
+  geom_point(aes(fill = body_mass_g), shape = 21, size = 3) +
+  scale_fill_blueprint(type = "multi", option = "fsc")
+#> Warning: Removed 2 rows containing missing values (`geom_point()`).
+```
+
+<img src="man/figures/README-continuous-1.png" width="100%" />

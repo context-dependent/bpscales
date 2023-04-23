@@ -34,17 +34,20 @@ gradients <- list(
     bipolar = list(
         green_coral = c(
             "#00CF97",
-            "#FFFFFF",
+            "#BBFFDA",
+            "#F5CABF",
             "#FF4500"
         ),
         blue_coral = c(
             "#0000FF",
-            "#FFFFFF",
+            "#87CEFA",
+            "#F5CABF",
             "#FF4500"
         ),
         blue_green = c(
             "#0000FF",
-            "#FFFFFF",
+            "#87CEFA",
+            "#BBFFDA",
             "#00CF97"
         )
     ),

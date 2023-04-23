@@ -1,5 +1,6 @@
 #' Display defined Palettes
 #'
+#' @return a plot, showing all of the blueprint colour palettes.
 #' @import ggplot2
 #' @export
 show_blueprint_palettes <- function() {
