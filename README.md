@@ -36,6 +36,12 @@ show_blueprint_palettes()
 
 ## Discrete Data
 
+> **Penguins:** The examples below use data from the
+> [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/)
+> package, developed by Horst, Hill, and Gorman as an alternative to the
+> `iris` dataset, which is [old, boring, and built by
+> eugenicists](https://armchairecology.blog/iris-dataset/).
+
 ``` r
 library(bpscales)
 library(palmerpenguins)
