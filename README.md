@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/context-dependent/bpscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/context-dependent/bpscales/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/context-dependent/bpscales/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/context-dependent/bpscales/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `bpscales` provides Blueprint-branded colour palettes for general
