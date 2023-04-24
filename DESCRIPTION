@@ -1,24 +1,25 @@
 Package: bpscales
-Title: What the Package Does (One Line, Title Case)
+Title: Add Blueprint colours to your plots
 Version: 0.1.0
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Authors@R:
+    person("Thomas", "McManus", , "thomas.keith.mcmanus@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0005-0839-3018"))
+Description: bpscales provides a flexible, standardized set of brand colour palettes,
+    along with ggplot-ready scales to add them to your plots.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Suggests: 
+Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Depends: 
+Depends:
     R (>= 2.10)
 LazyData: true
 VignetteBuilder: knitr
-Imports: 
+Imports:
     dplyr (>= 1.1.0),
     ggplot2 (>= 3.4.2),
     grDevices (>= 4.2.3),
