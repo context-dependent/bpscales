@@ -65,6 +65,11 @@ gradients <- list(
             "#00CF97",
             "#FF4500",
             "#ffadc4"
+        ),
+        tritone = c(
+            "#0000FF",
+            "#00CF97",
+            "#FF4500",
         )
     )
 )
