@@ -2,7 +2,7 @@
 
 export(bp_pal)
 export(scale_color_blueprint)
-export(scale_colour_blueprint)
 export(scale_fill_blueprint)
+export(scale_x_pct)
 export(show_blueprint_palettes)
 import(ggplot2)

@@ -59,7 +59,7 @@
 #'   depending on the value of `discrete`
 #'
 #' @export
-scale_color_blueprint <- function(
+scale_color_blueprint <- scale_colour_blueprint <- function(
     ...,
     type = "linear",
     option = "blue",
@@ -83,10 +83,6 @@ scale_color_blueprint <- function(
     }
 }
 
-#' @rdname scale_blueprint
-#' @aliases scale_color_blueprint
-#' @export
-scale_colour_blueprint <- scale_color_blueprint
 
 #' @rdname scale_blueprint
 #' @export
@@ -148,4 +144,22 @@ bp_ramp <- function(
     f <- grDevices::colorRamp(m, space = "Lab", interpolate = "spline")
     g <- f(seq(begin, end, length.out = n)) / 255
     grDevices::rgb(g[, 1], g[, 2], g[, 3], alpha = alpha)
+}
+
+#' @rdname scale_blueprint
+#' @export
+scale_x_pct <- function(
+  ..., 
+  expand = expansion(mult = c(0, 0.05)),
+  limits = c(0, 1), 
+  breaks = c(.25, .5, .75, 1), 
+  labels = scales::percent_format(accuracy = 1)
+) {
+  scale_x_continuous(
+    ..., 
+    labels = labels, 
+    limits = limits,
+    expand = expand,
+    breaks = breaks
+  )
 }

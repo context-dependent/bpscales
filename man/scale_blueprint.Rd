@@ -2,24 +2,13 @@
 % Please edit documentation in R/scales.R
 \name{scale_color_blueprint}
 \alias{scale_color_blueprint}
-\alias{scale_colour_blueprint}
 \alias{scale_fill_blueprint}
 \alias{bp_pal}
 \alias{bp_ramp}
+\alias{scale_x_pct}
 \title{Colour and fill scales using Blueprint-branded palettes}
 \usage{
 scale_color_blueprint(
-  ...,
-  type = "linear",
-  option = "blue",
-  discrete = FALSE,
-  alpha = 1,
-  begin = 0,
-  end = 1,
-  direction = 1
-)
-
-scale_colour_blueprint(
   ...,
   type = "linear",
   option = "blue",
@@ -58,6 +47,14 @@ bp_ramp(
   begin = 0,
   end = 1,
   direction = 1
+)
+
+scale_x_pct(
+  ...,
+  expand = expansion(mult = c(0, 0.05)),
+  limits = c(0, 1),
+  breaks = c(0.25, 0.5, 0.75, 1),
+  labels = scales::percent_format(accuracy = 1)
 )
 }
 \arguments{
